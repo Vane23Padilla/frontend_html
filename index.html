@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Académico - Estudiantes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .sidebar {
+            position: relative;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            color: #333;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: #f8f9fa;
+        }
+        .nav-link i {
+            margin-right: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        #btn-logout {
+    position: fixed;
+    bottom: 100px;
+    left: 20px; 
+    width: 10%;
+}
+    
+    /* Estilos para la sección de login */
+    #login-section {
+        max-width: 500px;
+        margin: 0 auto;
+        padding-top: 50px;
+    }
+      
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar p-3">
+                <h4 class="text-center mb-4">Sistema Académico</h4>
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" id="nav-home">
+                                <i class="bi bi-house-door"></i> Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-profile">
+                                <i class="bi bi-person"></i> Mi Perfil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-subjects">
+                                <i class="bi bi-book"></i> Asignaturas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-enrollment">
+                                <i class="bi bi-pencil-square"></i> Matrículas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="nav-grades">
+                                <i class="bi bi-card-checklist"></i> Mis Notas
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mt-auto text-center text-muted small p-3">
+                    <p>Servidor de Estudiantes</p>
+                    <p>Estado: <span class="text-success">En línea</span></p>
+                </div>
+            </div>
+             
+                              <!--  Sección de Login/Registro -->
+<div id="login-section">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Acceso al Sistema Académico</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h6>Iniciar Sesión</h6>
+                        <div class="mb-3">
+                            <label for="login-id" class="form-label">ID de Estudiante</label>
+                            <input type="text" class="form-control" id="login-id" placeholder="Ingresa tu ID de estudiante">
+                        </div>
+                        <button class="btn btn-primary" id="btn-login">Ingresar</button>
+                    </div>
+                    <hr>
+                    <div>
+                        <h6>¿Eres nuevo?</h6>
+                        <div class="mb-3">
+                            <label for="register-name" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="register-name" placeholder="Ingresa tu nombre completo">
+                        </div>
+                        <button class="btn btn-success" id="btn-register">Registrarme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- Main content -->
+            <div class="col-md-9 col-lg-10 content">
+                <!-- Home Section -->
+                <div id="home-section">
+                    <h2 class="mb-4">Bienvenido al Sistema Académico</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+                                    <h5 class="card-title">Mi Perfil</h5>
+                                    <p class="card-text">Gestiona tu información personal</p>
+                                    <button class="btn btn-sm btn-outline-primary" id="btn-profile">Ver Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="bi bi-book fs-1 text-success mb-3"></i>
+                                    <h5 class="card-title">Asignaturas</h5>
+                                    <p class="card-text">Explora las asignaturas disponibles</p>
+                                    <button class="btn btn-sm btn-outline-success" id="btn-subjects">Ver Asignaturas</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="bi bi-pencil-square fs-1 text-warning mb-3"></i>
+                                    <h5 class="card-title">Matrículas</h5>
+                                    <p class="card-text">Gestiona tus matrículas</p>
+                                    <button class="btn btn-sm btn-outline-warning" id="btn-enrollment">Ver Matrículas</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card text-center">
+                                <div class="card-body">
+                                    <i class="bi bi-card-checklist fs-1 text-danger mb-3"></i>
+                                    <h5 class="card-title">Mis Notas</h5>
+                                    <p class="card-text">Consulta tus calificaciones</p>
+                                    <button class="btn btn-sm btn-outline-danger" id="btn-grades">Ver Notas</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">Información del Sistema</h5>
+                        </div>
+                        <div class="card-body">
+                            <p>Este sistema permite a los estudiantes:</p>
+                            <ul>
+                                <li>Crear y gestionar su perfil</li>
+                                <li>Ver las asignaturas disponibles</li>
+                                <li>Matricularse en asignaturas</li>
+                                <li>Consultar sus calificaciones</li>
+                            </ul>
+                            <p class="text-muted small">Las calificaciones son ingresadas por los profesores desde el servidor de profesores.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div id="profile-section" style="display: none;">
+                    <h2 class="mb-4">Mi Perfil</h2>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Información Personal</h5>
+                            <button class="btn btn-sm btn-primary" id="btn-edit-profile">Editar Perfil</button>
+                        </div>
+                        <div class="card-body">
+                            <div id="profile-view">
+                                <div class="row mb-3">
+                                    <div class="col-md-4 text-md-end fw-bold">ID:</div>
+                                    <div class="col-md-8" id="profile-id">-</div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-4 text-md-end fw-bold">Nombre:</div>
+                                    <div class="col-md-8" id="profile-name">-</div>
+                                </div>
+                            </div>
+                            <div id="profile-edit" style="display: none;">
+                                <form id="profile-form">
+                                    <div class="mb-3">
+                                        <label for="profile-name-input" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="profile-name-input" required>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-secondary me-2" id="btn-cancel-profile">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subjects Section -->
+                <div id="subjects-section" style="display: none;">
+                    <h2 class="mb-4">Asignaturas Disponibles</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Lista de Asignaturas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Asignatura</th>
+                                            <th>Profesor</th>
+                                            <th>Ciclo</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="subjects-table-body">
+                                        <!-- Subjects will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrollment Section -->
+                <div id="enrollment-section" style="display: none;">
+                    <h2 class="mb-4">Mis Matrículas</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Asignaturas Matriculadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Asignatura</th>
+                                            <th>Profesor</th>
+                                            <th>Ciclo</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="enrollments-table-body">
+                                        <!-- Enrollments will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grades Section -->
+                <div id="grades-section" style="display: none;">
+                    <h2 class="mb-4">Mis Calificaciones</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">Notas por Asignatura</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Asignatura</th>
+                                            <th>Profesor</th>
+                                            <th>Nota 1</th>
+                                            <th>Nota 2</th>
+                                            <th>Promedio</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="grades-table-body">
+                                        <!-- Grades will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Acción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirm-modal-body">
+                    ¿Estás seguro de que deseas realizar esta acción?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirm-modal-btn">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
