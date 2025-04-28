@@ -1,6 +1,6 @@
 // Variables globales
 let currentStudentId = null
-const apiBaseUrl = "https://backendgo-production-46db.up.railway.app/"
+const apiBaseUrl = "https://backendgo-production-46db.up.railway.app/api/"
 let confirmModalCallback = null
 
 // Elementos DOM
